@@ -1,7 +1,8 @@
 <?php
-include_once 'Sample_Header.php';
+include_once 'header.php';
+//include_once '../test.php';
 
-use PhpOffice\PhpWord\Settings;
+/*use PhpOffice\PhpWord\Settings;
 
 $requirements = array(
     'php'   => array('PHP 5.3.3', version_compare(PHP_VERSION, '5.3.3', '>=')),
@@ -12,19 +13,19 @@ $requirements = array(
     'xmlw'  => array('PHP extension XMLWriter (optional)', extension_loaded('xmlwriter')),
     'xsl'   => array('PHP extension XSL (optional)', extension_loaded('xsl')),
 );
-if (!CLI) {
+if (!CLI) {*/
     ?>
-<div class="jumbotron">
+<!--<div class="jumbotron">
 <p>Welcome to PHPWord, a library written in pure PHP that provides a set of classes to write to and read from different document file formats, i.e. Office Open XML (.docx), Open Document Format (.odt), and Rich Text Format (.rtf).</p>
 <p>&nbsp;</p>
 <p>
     <a class="btn btn-lg btn-primary" href="https://github.com/PHPOffice/PHPWord" role="button"><i class="fa fa-github fa-lg" title="GitHub"></i>  Fork us on Github!</a>
     <a class="btn btn-lg btn-primary" href="http://phpword.readthedocs.org/" role="button"><i class="fa fa-book fa-lg" title="Docs"></i>  Read the Docs</a>
 </p>
-</div>
+</div>-->
     <?php
-}
-if (!CLI) {
+//}
+/*if (!CLI) {
     echo '<h3>Requirement check:</h3>';
     echo '<ul>';
     foreach ($requirements as $key => $value) {
@@ -42,4 +43,31 @@ if (!CLI) {
         $status = $result ? '32m passed' : '31m failed';
         echo "{$label} ... \033[{$status}\033[0m" . PHP_EOL;
     }
-}
+}*/
+?>
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="first_team">Выберите команду 1</label>
+            <select id="first_team" class="form-control" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="second_team">Выберите команду 2</label>
+            <select id="second_team" class="form-control" aria-label=".form-select-lg example">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <a href="create.php" class="btn btn-success">Добавить новую команду</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
