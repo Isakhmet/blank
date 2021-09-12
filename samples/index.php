@@ -1,5 +1,13 @@
 <?php
 include_once 'header.php';
+
+$dbh = new PDO('mysql:host=localhost;dbname=blank', 'user', 'password');
+$teams = array();
+foreach ($dbh->query('SELECT * from teams') as $key => $row) {
+    $teams[$key]['id']   = (int)$row['id'];
+    $teams[$key]['name'] = $row['name'];
+}
+
 //include_once '../test.php';
 
 /*use PhpOffice\PhpWord\Settings;
@@ -14,7 +22,7 @@ $requirements = array(
     'xsl'   => array('PHP extension XSL (optional)', extension_loaded('xsl')),
 );
 if (!CLI) {*/
-    ?>
+?>
 <!--<div class="jumbotron">
 <p>Welcome to PHPWord, a library written in pure PHP that provides a set of classes to write to and read from different document file formats, i.e. Office Open XML (.docx), Open Document Format (.odt), and Rich Text Format (.rtf).</p>
 <p>&nbsp;</p>
@@ -23,7 +31,7 @@ if (!CLI) {*/
     <a class="btn btn-lg btn-primary" href="http://phpword.readthedocs.org/" role="button"><i class="fa fa-book fa-lg" title="Docs"></i>  Read the Docs</a>
 </p>
 </div>-->
-    <?php
+<?php
 //}
 /*if (!CLI) {
     echo '<h3>Requirement check:</h3>';
@@ -50,19 +58,23 @@ if (!CLI) {*/
         <div class="form-group">
             <label for="first_team">Выберите команду 1</label>
             <select id="first_team" class="form-control" aria-label=".form-select-lg example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Выберите команду</option>
+                <?php
+                foreach ($teams as $team) {
+                    echo '<option value="' . $team["id"] . '">' . $team["name"] . '</option>';
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">
             <label for="second_team">Выберите команду 2</label>
             <select id="second_team" class="form-control" aria-label=".form-select-lg example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option selected>Выберите команду</option>
+                <?php
+                foreach ($teams as $team) {
+                    echo '<option value="' . $team["id"] . '">' . $team["name"] . '</option>';
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">
