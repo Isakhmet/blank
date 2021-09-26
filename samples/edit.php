@@ -1,13 +1,17 @@
 <?php
 
 include_once 'header.php';
+include_once 'Database.php';
 
-$dbh = new PDO('mysql:host=localhost;dbname=blank', 'user', 'password');
+//$dbh = new PDO('mysql:host=localhost;dbname=blank', 'user', 'password');
+$db = new Database();
 $players = array();
-$team = $dbh->query('SELECT * from teams where id='. $_REQUEST['team']);
+$team = $db->query('SELECT * from teams where id='. $_REQUEST['team']);
 $team = $team->fetch();
+$teamId =  $_REQUEST['team'];
 
-foreach ($dbh->query('SELECT * from players where team_id=' . $_REQUEST['team']) as $key => $row) {
+
+foreach ($db->query('SELECT * from players where team_id=' .$teamId) as $key => $row) {
     $players[$key]['id']     = (int)$row['id'];
     $players[$key]['name']   = $row['name'];
     $players[$key]['number'] = $row['number'];
@@ -19,7 +23,7 @@ foreach ($dbh->query('SELECT * from players where team_id=' . $_REQUEST['team'])
     <form>
         <div class="form-group">
             <label for="">Название команды</label>
-            <p><?= $team['name'] ?></p>
+            <p id="team_name" value="<?= $team['name'] ?>"><?= $team['name'] ?></p>
         </div>
         <div class="form-group">
             <label for="">Игроки</label>
@@ -57,10 +61,8 @@ foreach ($dbh->query('SELECT * from players where team_id=' . $_REQUEST['team'])
                 <a href="#" class="task_close closemodal" aria-hidden="true">×</a>
             </div>
             <div class="task_fields">
-                <input type="text" name="user" placeholder="Пользователь">
-                <input type="text" name="email" placeholder="Почта">
-                <input type="text" name="title" placeholder="Задача">
-                <input type="text" name="description" placeholder="Описание задачи">
+                <input type="text" name="user" placeholder="Имя игрока">
+                <input type="number" name="number" placeholder="Номер игрока">
             </div>
             <div class="task_create">
                 <a href="" id="add__task" class="create_button">Создать</a>

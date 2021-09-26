@@ -5,12 +5,12 @@ include_once 'header.php';
 ?>
 
 <div class="container">
-    <form>
+    <form action="create.php">
         <div class="form-group">
             <label for="">Название команды</label>
-            <input type="text" class="form-control" id="" placeholder="Chelsea">
+            <input type="text" class="form-control" id="team_name" placeholder="Chelsea">
         </div>
-        <div class="form-group">
+        <div class="form-group players">
             <label for="">Игроки</label>
             <table class="table table-bordered">
                 <thead>
@@ -38,9 +38,9 @@ include_once 'header.php';
                 </tr>
                 </tbody>
             </table>
-        </div>
         <div class="form-group">
             <button id="add-player" class="btn btn-success">Добавить игрока</button>
+        </div>
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
@@ -52,10 +52,8 @@ include_once 'header.php';
                 <a href="#" class="task_close closemodal" aria-hidden="true">×</a>
             </div>
             <div class="task_fields">
-                <input type="text" name="user" placeholder="Пользователь">
-                <input type="text" name="email" placeholder="Почта">
-                <input type="text" name="title" placeholder="Задача">
-                <input type="text" name="description" placeholder="Описание задачи">
+                <input type="text" name="user" placeholder="Имя игрока">
+                <input type="text" name="number" placeholder="Номер игрока">
             </div>
             <div class="task_create">
                 <a href="" id="add__task" class="create_button">Создать</a>
