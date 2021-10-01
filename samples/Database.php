@@ -13,4 +13,12 @@ class Database
     {
         return $this->connect->query($sql);
     }
+
+    public function getLastId($sql)
+    {
+        $stmt = $this->connect->prepare($sql);
+        $stmt->execute();
+
+        return $this->connect->lastInsertId();
+    }
 }
