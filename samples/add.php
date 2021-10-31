@@ -11,10 +11,9 @@ $data['team'] = $_POST['team'] ?? null;
 if(!empty($data)) {
     $sql = "SELECT id from teams  where name='". $data['team']."'";
     $team = $db->query($sql)->fetch();
-    $teamId = (int)$team['id'];
+    $teamId = $team['id'];
     
     $db->query("INSERT INTO `players`(name, number, team_id) VALUES ('{$data['name']}', '{$data['number']}', '$teamId')");
 }
 
-echo 'success';
-//die(var_dump($data));
+echo 'Создан';

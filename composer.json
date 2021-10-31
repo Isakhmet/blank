@@ -58,7 +58,7 @@
         "fix": "Fixes issues found by PHP-CS"
     },
     "require": {
-        "php": "^5.3.3 || ^7.0 || ^8.0",
+        "php": "5.4",
         "ext-xml": "*",
         "laminas/laminas-escaper": "^2.2",
       "ext-pdo": "*"

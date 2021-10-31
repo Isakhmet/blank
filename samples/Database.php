@@ -21,4 +21,10 @@ class Database
 
         return $this->connect->lastInsertId();
     }
+
+    public function deleteQuery($sql)
+    {
+        $stmt = $this->connect->prepare($sql);
+        $stmt->execute();
+    }
 }
